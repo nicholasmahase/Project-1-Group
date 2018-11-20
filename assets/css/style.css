@@ -1,3 +1,7 @@
+body{
+    background-image: url('../images/background_image.png')
+}
+
 /* Hero Jumbotron */
 .jumbotron{
     background-image: url('../images/hero_background_2.png');
@@ -14,18 +18,27 @@
 }
 
 /* Search Box */
+.search_area {
+    position: relative;
+    bottom: 252px;
+}
 form.form-inline {
     position: relative;
     left: 39%;
     right: auto;
 }
-.bg-light {
-    background-color: #108014 !important;
-}
+
 button.btn.btn-outline-success.my-2.my-sm-0 {
-    background-color: #108014;
+    background-color: white;
+    color: #108014;
 }
 button.btn.btn-outline-success.my-2.my-sm-0:hover{
-    color: #108014;
-    background-color: white;
+    background-color: #108014;
+    color: white;
 }
+
+/* Carousel Images */
+.carousel-inner {
+    max-height: 300px;
+    min-width: auto;
+  }
