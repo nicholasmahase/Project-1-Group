@@ -15,13 +15,6 @@ body{
     height: 450px;
 
 }
-.display-4, h3 {
-    text-align: center;
-    font-weight: bold;
-    color: white;
-
-}
-
 /* Search Box */
 .search_area {
     position: relative;
