@@ -1,50 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <title>hElp</title>
-  <!--Viewport-->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--Reset-->
-  <link rel="stylesheet" href="./assets/css/reset.css">
-  <!--Bootstrap CSS-->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <title>HELP A place for Halal Meat</title>
+  <link rel="stylesheet" href="./Assets/Style/cssreset.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!--Custom CSS-->
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./Assets/Style/style.css">
+<style>
+
+h1.display-1 {
+  text-align: center;
+  font-size: 70px;
+  font-style: oblique;
+}
+
+footer.footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+}
+
+</style>
 </head>
 
 <body>
+  <!-- Bootstrap Navigation Tab on All Pages-->
+  <ul class="nav justify-content-end">
+      <li class="nav-item">
+          <a class="nav-link active" href="">Homepage</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="">Contact Us</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="">About Us</a>
+          
+      </li>
 
-    <!-- Hero Area-->
-    <div class="jumbotron">
-        <h1 class="display-4">Halal food is just a click away!</h1>
-        <h3>Order from local favourites</h3>
+      <li class="nav-item">
+          <a class="nav-link" href="">Google Reviews</a>
+          
+      </li>
+  </ul>
+  <section>
+      <h1 class="display-1">About Us</h1>
+      <div class="container">
+          <div class="row">
+              <div class="col-md-9">
+                  <div class="media">
+                      <img class="align-self-start mr-3" src="" alt="my_image">
+                      <div class="media-body">
+                          <p>We are three devout muslims whom would like a easier way to find a place to eat out.</p>
+                          <br>
+                          <p>We enjoy spending times with our family and learning new things together. We've recently created Help in order to help elderly Muslims whom have no idea how the western food world works.</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
 
-      <!-- Main Search Container-->
-      <div class="search_area">
-      <nav class="navbar navbar-light bg-light">
-          <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search for food" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </nav>
+      
+
+  </section>
+  <!-- Sticky Footer all Pages -->
+  <footer class="footer">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+                  <span class="text-muted">footer &copy; </span>
+              </div>
+          </div>
       </div>
 
-      <!-- Slide Show Container -->
-      <div class="slideshow">
-        
+  </footer>
 
-      </div>
-
-    <!-- JQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Latest compiled and minified JavaScript for bootstrap -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <!-- My Javascript -->
-    <script type="text/javascript" src="assets/javascript/doc.js"></script>
 </body>
-
-</html>
