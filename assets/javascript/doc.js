@@ -14,6 +14,25 @@ $(document).ready(function () {
             // Create a variable to reference the database
             var database = firebase.database();
 
+            // snapshot of data to send to firebase
+            $("#searchHalal").on("click", function(event){
+                event.preventDefault();
+
+                    //Inital Value
+            var searchedFood = $("#search_form").val().trim();
+
+            console.log(searchedFood);
+
+            database.ref("searchFormInfo").push({
+                searchedFood: searchedFood
+            });
+
+            /* database.ref("searchFormInfo").once("child_added",function(childSnapshot) {
+                var thankYouMessage = "<h2>" + "Thank you " + childSnapshot.val().firstName + " " + childSnapshot.val().lastName + " for your feedback." + "</h2>";  
+                $('#thankYouMessage').append(thankYouMessage);
+            }); */
+
+        });
             // Search function
 
             $("button").on("click", function () {
@@ -30,9 +49,11 @@ $(document).ready(function () {
                         method: "GET"
                     }).done(function (response) {
 
-                        for(var i = 0; i < limit; i++) { 
-                            
-                        }
+                        for (var i = 0; i < response.data.length; i++) {
+                            var title = (response.data[i].title);
+                            var rating = (response.data[i].rating);
+                            console.log(response.data[i]);
+                          }
 
                             });
                     });
