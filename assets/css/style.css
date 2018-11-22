@@ -1,0 +1,49 @@
+/* Contact Form Styling */
+.mb-4 {
+    width: 960px;
+    margin: auto;
+}
+body{
+    background-image: url('../images/background_image.png')
+}
+
+/* Hero Jumbotron */
+.jumbotron{
+    background-image: url('../images/hero_background_2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 450px;
+
+}
+.display-4, h3 {
+    text-align: center;
+    font-weight: bold;
+    color: white;
+
+}
+
+/* Search Box */
+.search_area {
+    position: relative;
+    bottom: 252px;
+}
+form.form-inline {
+    position: relative;
+    left: 39%;
+    right: auto;
+}
+
+button.btn.btn-outline-success.my-2.my-sm-0 {
+    background-color: white;
+    color: #108014;
+}
+button.btn.btn-outline-success.my-2.my-sm-0:hover{
+    background-color: #108014;
+    color: white;
+}
+
+/* Carousel Images */
+.carousel-inner {
+    max-height: 300px;
+    min-width: auto;
+  }
