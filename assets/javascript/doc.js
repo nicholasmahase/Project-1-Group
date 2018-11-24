@@ -1,93 +1,81 @@
-      // Initial array of gifs
-      // var gifs = ["Will Smith", "Mr. Bean", "Adam Sandler", "Kevin Hart"];
+$(document).ready(function () {
 
-      // displaygifInfo function re-renders the HTML to display the appropriate content
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDVPAHzPuMJJbOl2uK9uXNx2jF41V_bVNE",
+        authDomain: "myfullstackproject.firebaseapp.com",
+        databaseURL: "https://myfullstackproject.firebaseio.com",
+        projectId: "myfullstackproject",
+        storageBucket: "myfullstackproject.appspot.com",
+        messagingSenderId: "324837953357"
+    };
+    firebase.initializeApp(config);
 
-      function displaygifInfo() {
+    // Create a variable to reference the database
+    var database = firebase.database();
 
-        var gif = $(this).attr("data-name");
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gif + "&api_key=gpAVPx2kVKoCbUtMgxvIBO0ulIgvD1p2&tag=movies&limit=12";
-
-
-        // Creates AJAX call for the specific gif button being clicked
-        $.ajax({
-          url: queryURL,
-          method: "GET"
-        }).done(function (response) {
-          $('.gif-container').empty();
-          for (var i = 0; i < response.data.length; i++) {
-            var title = "<div class='title'> Title:  " + (response.data[i].title) + " </div>";
-            var rating = "<div class='ratings'> Rating:  " + (response.data[i].rating) + " </div>";
-            var image = '<img src= " ' + response.data[i].images.fixed_height_still.url +
-              '" data-still=" ' + response.data[i].images.fixed_height_still.url +
-              ' " data-animate=" ' + response.data[i].images.fixed_height.url + '" data-state="still" class="gifDisplay">'
-            var gifItUp = '<div class="col-md-3">' + title + rating + image + '</div>';
-            $('.gif-container').append(gifItUp);
-            console.log(response.data[i]);
-          }
-
-          $('.gifDisplay').on('click', function () {
-            var state = $(this).attr('data-state');
-            if (state === 'still') {
-              $(this).attr('src', $(this).attr("data-animate"));
-              $(this).attr('data-state', 'animate');
-            } else {
-              $(this).attr('src', $(this).attr("data-still"));
-              $(this).attr('data-state', 'still');
-            }
-
-          });
-        })
-      }
-
-
-
-      // Function for displaying gif data
-      function renderButtons() {
-
-        // Deletes the gifs prior to adding new gifs
-        // (this is necessary otherwise you will have repeat buttons)
-        $(".buttons-view").empty();
-
-
-        // Loops through the array of gifs
-        for (var i = 0; i < gifs.length; i++) {
-
-          // Then dynamicaly generates buttons for each gif in the array
-          // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
-          var a = $("<button>");
-          // Adds a class of gif to our button
-          a.addClass("gif");
-          // Added a data-attribute
-          a.attr("data-name", gifs[i]);
-          // Provided the initial button text
-          a.text(gifs[i]);
-          // Added the button to the buttons-view div
-          $(".buttons-view").prepend(a);
-
-        }
-      }
-
-
-      // This function handles events where the add gif button is clicked
-      $(".add-gif").on("click", function (event) {
+    // snapshot of data to send to firebase
+    $("#searchHalal").on("click", function(event){
         event.preventDefault();
 
-        // This line of code will grab the input from the textbox
-        var gif = $(".gif-input").val().trim();
+            //Inital Value
+    var searchedFood = $("#search_form").val().trim();
 
-        // The gif from the textbox is then added to our array
-        gifs.push(gif);
+    console.log(searchedFood);
 
-        // Calling renderButtons which handles the processing of our gif array
-        renderButtons();
+    database.ref("searchFormInfo").push({
+        searchedFood: searchedFood
+    });
 
-      });
+    /* database.ref("searchFormInfo").once("child_added",function(childSnapshot) {
+        var thankYouMessage = "<h2>" + "Thank you " + childSnapshot.val().firstName + " " + childSnapshot.val().lastName + " for your feedback." + "</h2>";  
+        $('#thankYouMessage').append(thankYouMessage);
+    }); */
 
-      // Adding click event listeners to all elements with a class of "gif"
-      $(document).on("click", ".gif", displaygifInfo);
+});
+    // Search function
 
-      // Calling the renderButtons function to display the intial buttons
-      renderButtons();
+    $("button").on("click", function () {
+            var searchTerm = $("#search_form").val().trim();
+            $.ajax({
+                method: 'GET',
+                url: 'https://developers.zomato.com/api/v2.1/search?',
+                data: {
+                    entity_id: 'Toronto',
+                    entity_type: 'city', 
+                    q: searchTerm,
+                    count: 10,
+                    cuisines: 'halal',
+                    //sort: 'real_distance'
+                }, 
+                dataType: 'json',
+                async: true,
+                
+                // This inserts the api key into the HTTP header
+                beforeSend: function(xhr){
+                    xhr.setRequestHeader('user-key', '5c2f43de515f9f19b1dc0c0aab34f1fa');
+                },  
+                success: function(response) { 
+                    var searchResults = "";
+                    for(var i = 0; i < response.restaurants.length; i++) {
+                    var resResultName = response.restaurants[i].restaurant.name;
+                    var resResultRating = response.restaurants[i].restaurant.user_rating.aggregate_rating;
+                    var resResultLocation = response.restaurants[i].restaurant.location.address;
+                    var resResultCuisine = response.restaurants[i].restaurant.cuisines;
+                    var url = response.restaurants[i].restaurant.events_url;
 
-      
+                    console.log(response.restaurants[i]);
+                       searchResults += "<tr>";
+                       searchResults += "<td> <a href= " + url + ">" + resResultName + "</a></td>";
+                       searchResults += "<td>" + resResultLocation + "</td>";
+                       searchResults += "<td>" + resResultRating + "</td>";
+                       searchResults += "<td>" + resResultCuisine + "</td>";
+                       searchResults += "<td></td>";
+                       searchResults += "</tr>";
+                }
+                
+                $('.table').html(searchResults);
+                }
+            });
+                });
+    });
