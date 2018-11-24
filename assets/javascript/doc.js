@@ -41,7 +41,7 @@ $(document).ready(function () {
                 method: 'GET',
                 url: 'https://developers.zomato.com/api/v2.1/search?',
                 data: {
-                    entity_id: 'toronto',
+                    entity_id: 'Toronto',
                     entity_type: 'city', 
                     q: searchTerm,
                     count: 10,
@@ -56,6 +56,7 @@ $(document).ready(function () {
                     xhr.setRequestHeader('user-key', '5c2f43de515f9f19b1dc0c0aab34f1fa');
                 },  
                 success: function(response) { 
+                    var searchResults = "";
                     for(var i = 0; i < response.restaurants.length; i++) {
                     var resResultName = response.restaurants[i].restaurant.name;
                     var resResultRating = response.restaurants[i].restaurant.user_rating.aggregate_rating;
@@ -64,15 +65,16 @@ $(document).ready(function () {
                     var url = response.restaurants[i].restaurant.events_url;
 
                     console.log(response.restaurants[i]);
-                       var searchResults = "<tr>";
+                       searchResults += "<tr>";
                        searchResults += "<td> <a href= " + url + ">" + resResultName + "</a></td>";
                        searchResults += "<td>" + resResultLocation + "</td>";
                        searchResults += "<td>" + resResultRating + "</td>";
                        searchResults += "<td>" + resResultCuisine + "</td>";
                        searchResults += "<td></td>";
                        searchResults += "</tr>";
-                       $('.table').append(searchResults);
                 }
+                
+                $('.table').html(searchResults);
                 }
             });
                 });
