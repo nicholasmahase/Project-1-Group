@@ -47,14 +47,15 @@ $(document).ready(function () {
 
             $.ajax({
                 method: 'GET',
-                url: 'https://developers.zomato.com/api/v2.1/search?',
-                params: {
+                url: 'https://developers.zomato.com/api/v2.1/search?entity_id=toronto&entity_type=city&q=food&count=10&cuisines=halal&sort=rating',
+                data: {
+                    entity_id: 'toronto',
                     entity_type: 'city', 
                     q: 'food',
-                    //user_key: '5c2f43de515f9f19b1dc0c0aab34f1fa',
                     count: 10,
-                    category: 'halal', 
-                },
+                    cuisines: 'halal',
+                    sort: 'rating'
+                }, 
                 dataType: 'json',
                 async: true,
                 
@@ -65,26 +66,20 @@ $(document).ready(function () {
                 success: function(response) { 
                     for(var i = 0; i < response.restaurants.length; i++) {
                     var resResultName = response.restaurants[i].restaurant.name;
-                    var resResultRating = response.restaurants[i].restaurant.rating;
-                    var resResultLocation = response.restaurants[i].restaurant.name;
+                    var resResultRating = response.restaurants[i].restaurant.user_rating.aggregate_rating;
+                    var resResultLocation = response.restaurants[i].restaurant.location.address;
                     var resResultPrice = response.restaurants[i].restaurant.name;
 
-                    //$('#search_results').append(fishBowl);  
-                    //console.log(fishBowl);
-                    //console.log(response.restaurants[i].restaurant.name);
-                       var searchName = "<tr>";
-                       searchName += "<td>" + resResultName + "</td>";
-                       searchName += "<td>" + resResultRating + "</td>";
-                       searchName += "<td></td>";
-                       searchName += "</tr>";
-                       $('.table').append(searchName);
+                    console.log(response.restaurants[i]);
+                       var searchResults = "<tr>";
+                       searchResults += "<td>" + resResultName + "</td>";
+                       searchResults += "<td>" + resResultRating + "</td>";
+                       searchResults += "<td>" + resResultLocation + "</td>";
+                       searchResults += "<td>" + resResultPrice + "</td>";
+                       searchResults += "<td></td>";
+                       searchResults += "</tr>";
+                       $('.table').append(searchResults);
 
-                      /*  var searchResult = "<tr>";
-                       searchResult += "<td>" + resResultRating + "</td>";
-                       searchResult += "<td></td>";
-                       searchResult += "</tr>";
-                    
-                       $('.rating').append(searchResult); */
                 
                 }
                 }
