@@ -34,20 +34,20 @@
       </div>
 
       <!-- Search Results Section-->
-      <div class="jumbotron">
+      <!-- <div class="jumbotron">
           <h1 class="text-center" id="resultHeader"> Search Results </h1>
-      </div>
+      </div> -->
 
-      <div class="searchResults" id="search_results">
+      <div class="searchResults" id="search_results"> 
 
-          <table class="table">
+          <table class="zomatoTable">
               <thead class="thead-dark">
-                  <h2 id="tableName">Restaurant Results</h2>
+                  <h2 id="tableName">Top (10) Zomato Restaurant Results</h2>
                   <tr>
                       <th scope="col" class="name">Restaurant Name</th>
                       <th scope="col" class="location">Location</th>
                       <th scope="col" class="rating">Rating</th>
-                      <th scope="col" class="price">$</th>
+                      <th scope="col" class="price">Cuisine</th>
                   </tr>
               </thead>
               <tbody>
@@ -56,6 +56,22 @@
           </table>
 
       </div>
+      <div class="yelpResults" id="yelp_results">
+      <table class="yelpTable">
+        <thead class="thead-dark">
+            <h2 id="tableName">Top (10) Yelp Restaurant Results</h2>
+            <tr>
+                <th scope="col" class="name">Restaurant Name</th>
+                <th scope="col" class="location">Location</th>
+                <th scope="col" class="rating">Rating</th>
+                <th scope="col" class="price">Cuisine</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+  </div>
       <!-- Slide Show Container -->
       
           <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -116,8 +132,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript for bootstrap -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <!-- My Javascript -->
+    <!-- My Javascript Files -->
     <script type="text/javascript" src="assets/javascript/doc.js"></script>
+    <script type="text/javascript" src="assets/javascript/yelp.js"></script>
 
 </body>
 
