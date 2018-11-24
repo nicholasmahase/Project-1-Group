@@ -69,7 +69,7 @@ $(document).ready(function () {
                 searchResults += "</tr>";
                 }
             
-            $('.zomatoTable').html(searchResults);
+            $('.table').html(searchResults);
             }
         });
     });
