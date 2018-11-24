@@ -58,13 +58,40 @@ $(document).ready(function () {
                 dataType: 'json',
                 async: true,
                 
-                beforeSend: function(xhr){xhr.setRequestHeader('user-key', 
-                '5c2f43de515f9f19b1dc0c0aab34f1fa');},  // This inserts the api key into the HTTP header
+                // This inserts the api key into the HTTP header
+                beforeSend: function(xhr){
+                    xhr.setRequestHeader('user-key', '5c2f43de515f9f19b1dc0c0aab34f1fa');
+                },  
                 success: function(response) { 
-                    for(var i = 0; i < response.restaurants.length; i++)
-                    //var fishBowl = response.restaurants[i].restaurant.name;
-                    $('#search_results').append(response.restaurants[i].restaurant.name);  
+                    for(var i = 0; i < response.restaurants.length; i++) {
+                    var resResultName = response.restaurants[i].restaurant.name;
+                    var resResultRating = response.restaurants[i].restaurant.rating;
+                    var resResultLocattion = response.restaurants[i].restaurant.name;
+                    var resResultPrice = response.restaurants[i].restaurant.name;
+
+                    //$('#search_results').append(fishBowl);  
                     //console.log(fishBowl);
+                    //console.log(response.restaurants[i].restaurant.name);
+                       var searchName = "<tr>";
+                       searchName += "<td>" + resResultName + "</td>";
+                       //searchData += "<td>" + resResultRating + "</td>";
+                       //searchData += "<td>" + resResultLocattion + "</td>";
+                       //searchData += "<td>" + resResultPrice + "</td>";
+                       searchName += "<td></td>";
+                       searchName += "</tr>";
+                       $('.name').append(searchName);
+
+                       var searchResult = "<tr>";
+                       searchResult += "<td>" + resResultRating + "</td>";
+                       //searchData += "<td>" + resResultRating + "</td>";
+                       //searchData += "<td>" + resResultLocattion + "</td>";
+                       //searchData += "<td>" + resResultPrice + "</td>";
+                       searchResult += "<td></td>";
+                       searchResult += "</tr>";
+                    
+                       $('.rating').append(searchResult);
+                
+                }
                 }
             });
                 });
