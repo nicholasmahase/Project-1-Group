@@ -66,7 +66,7 @@ $(document).ready(function () {
 
                     console.log(response.restaurants[i]);
                        searchResults += "<tr>";
-                       searchResults += "<td> <a href= " + url + ">" + resResultName + "</a></td>";
+                       searchResults += "<td> <a href= " + url + " target='_blank'>" + resResultName + "</a></td>";
                        searchResults += "<td>" + resResultLocation + "</td>";
                        searchResults += "<td>" + resResultRating + "</td>";
                        searchResults += "<td>" + resResultCuisine + "</td>";

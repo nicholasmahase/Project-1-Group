@@ -47,3 +47,8 @@ button.btn.btn-outline-success.my-2.my-sm-0:hover{
     max-height: 300px;
     min-width: auto;
   }
+
+  /* Cards Area */
+  .welcome_area {
+    display: inline-flex;
+}
