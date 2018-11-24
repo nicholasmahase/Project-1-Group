@@ -34,11 +34,11 @@ $(document).ready(function () {
         var searchTerm = $("#search_form").val().trim();
         $.ajax({
             method: 'GET',
-            url: 'https://developers.zomato.com/api/v2.1/search?',
+            url: 'https://api.yelp.com/v3/businesses/search',
             data: {
                 entity_id: 'Toronto',
                 entity_type: 'city', 
-                q: searchTerm,
+                term: searchTerm,
                 count: 10,
                 cuisines: 'halal',
                 //sort: 'real_distance'
@@ -48,31 +48,18 @@ $(document).ready(function () {
             
             // This inserts the api key into the HTTP header
             beforeSend: function(xhr){
-                xhr.setRequestHeader('user-key', '5c2f43de515f9f19b1dc0c0aab34f1fa');
+                xhr.setRequestHeader('user-key', 'sQz0W1xApsQiW8nhGFTVFFEuOYci9WfuCtYGhnGdGDNhMuA5PvtdJLXWNQZhEDkNumudP6z8jXf0ErBdHOlrV7v8dYgisvk2fwJEJtTLDqApA_8ldmybzIsz61XzW3Yx');
             },  
             success: function(response) { 
                 var searchResults = "";
-                for(var i = 0; i < response.restaurants.length; i++) {
-                var resResultName = response.restaurants[i].restaurant.name;
-                var resResultRating = response.restaurants[i].restaurant.user_rating.aggregate_rating;
-                var resResultLocation = response.restaurants[i].restaurant.location.address;
-                var resResultCuisine = response.restaurants[i].restaurant.cuisines;
-                var url = response.restaurants[i].restaurant.events_url;
+                for(var i = 0; i < response.businesses.length; i++) {
+                var resResultName = response.businesses[i].restaurant.name;
+                var resResultRating = response.businesses[i].restaurant.user_rating.aggregate_rating;
+                var resResultLocation = response.businesses[i].restaurant.location.address;
+                var resResultCuisine = response.businesses[i].restaurant.cuisines;
+                var url = response.businesses[i].restaurant.events_url;
 
-<<<<<<< HEAD
-                    console.log(response.restaurants[i]);
-                       searchResults += "<tr>";
-                       searchResults += "<td> <a href= " + url + " target='_blank'>" + resResultName + "</a></td>";
-                       searchResults += "<td>" + resResultLocation + "</td>";
-                       searchResults += "<td>" + resResultRating + "</td>";
-                       searchResults += "<td>" + resResultCuisine + "</td>";
-                       searchResults += "<td></td>";
-                       searchResults += "</tr>";
-                }
-                
-                $('.table').html(searchResults);
-=======
-                console.log(response.restaurants[i]);
+                console.log(response.businesses[i]);
                 searchResults += "<tr>";
                 searchResults += "<td> <a href= " + url + ">" + resResultName + "</a></td>";
                 searchResults += "<td>" + resResultLocation + "</td>";
@@ -80,10 +67,9 @@ $(document).ready(function () {
                 searchResults += "<td>" + resResultCuisine + "</td>";
                 searchResults += "<td></td>";
                 searchResults += "</tr>";
->>>>>>> f34bc6c380438e47d32b7d5dc5f83c4f0e024142
                 }
             
-            $('.table').html(searchResults);
+            $('.yelpTable').html(searchResults);
             }
         });
     });

@@ -3,10 +3,10 @@
     width: 960px;
     margin: auto;
 }
-body{
-   /* background-image: url('../images/background_image.png') */
+.h2, h2 {
+    font-size: 2rem;
+    margin-top: -60px;
 }
-
 /* Hero Jumbotron */
 .jumbotron{
     background-image: url('../images/hero_background_2.png');
