@@ -61,8 +61,11 @@ $(document).ready(function () {
                 beforeSend: function(xhr){xhr.setRequestHeader('user-key', 
                 '5c2f43de515f9f19b1dc0c0aab34f1fa');},  // This inserts the api key into the HTTP header
                 success: function(response) { 
-                    console.log(response) 
-                } 
+                    for(var i = 0; i < response.restaurants.length; i++)
+                    //var fishBowl = response.restaurants[i].restaurant.name;
+                    $('#search_results').append(response.restaurants[i].restaurant.name);  
+                    //console.log(fishBowl);
+                }
             });
                 });
     });
