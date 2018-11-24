@@ -66,7 +66,7 @@ $(document).ready(function () {
                     for(var i = 0; i < response.restaurants.length; i++) {
                     var resResultName = response.restaurants[i].restaurant.name;
                     var resResultRating = response.restaurants[i].restaurant.rating;
-                    var resResultLocattion = response.restaurants[i].restaurant.name;
+                    var resResultLocation = response.restaurants[i].restaurant.name;
                     var resResultPrice = response.restaurants[i].restaurant.name;
 
                     //$('#search_results').append(fishBowl);  
@@ -74,22 +74,17 @@ $(document).ready(function () {
                     //console.log(response.restaurants[i].restaurant.name);
                        var searchName = "<tr>";
                        searchName += "<td>" + resResultName + "</td>";
-                       //searchData += "<td>" + resResultRating + "</td>";
-                       //searchData += "<td>" + resResultLocattion + "</td>";
-                       //searchData += "<td>" + resResultPrice + "</td>";
+                       searchName += "<td>" + resResultRating + "</td>";
                        searchName += "<td></td>";
                        searchName += "</tr>";
-                       $('.name').append(searchName);
+                       $('.table').append(searchName);
 
-                       var searchResult = "<tr>";
+                      /*  var searchResult = "<tr>";
                        searchResult += "<td>" + resResultRating + "</td>";
-                       //searchData += "<td>" + resResultRating + "</td>";
-                       //searchData += "<td>" + resResultLocattion + "</td>";
-                       //searchData += "<td>" + resResultPrice + "</td>";
                        searchResult += "<td></td>";
                        searchResult += "</tr>";
                     
-                       $('.rating').append(searchResult);
+                       $('.rating').append(searchResult); */
                 
                 }
                 }
