@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>Reviews Page</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+    crossorigin="anonymous">
+
+    <style>
+
+    table {
+    
+    position: relative;
+    top: 350px;
+    width: 225%;
+    right: 450px;
+    
+}
+
+
+    </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <br>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+      <h1 class="text-center">Review Us Today!</h1>
+    </div>
+    <div class="row">
+
+      <!-- Sign-Up Card-->
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">
+           Got A New Review?
+          </div>
+          <div class="card-body">
+
+            <!-- Sign-up Form (note the various input "types")-->
+            <form role="form">
+              <div class="form-group">
+                <label for="name-input">Name:</label>
+                <input class="form-control" id="name-input" type="text">
+              </div>
+              <div class="form-group">
+                <label for="email-input">Email:</label>
+                <input class="form-control" id="email-input" type="email">
+              </div>
+              <div class="form-group">
+                <label for="age-input">Age:</label>
+                <input class="form-control" id="age-input" type="number">
+              </div>
+              <div class="form-group">
+                <label for="comment-input">Tell Us What You Think!</label>
+                <textarea class="form-control" id="comment-input" rows="5"></textarea>
+              </div>
+              <button class="btn btn-default" id="add-user" type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Most Recent Member Card -->
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">
+            Most Recent Reviews
+          </div>
+          <div class="card-body" id="recent-member">
+            <h2 id="name-display">Jimmy John</h2>
+            <h4 id="email-display">Email: jimmy@john.edu</h4>
+            <h4 id="age-display">Age: 27</h4>
+            <p id="comment-display">I'm signing up, because I want to spread sandwiches to the world.</p>
+
+            <table>
+                <tbody>
+
+                </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+    apiKey: "AIzaSyDVPAHzPuMJJbOl2uK9uXNx2jF41V_bVNE",
+    authDomain: "myfullstackproject.firebaseapp.com",
+    databaseURL: "https://myfullstackproject.firebaseio.com",
+    projectId: "myfullstackproject",
+    storageBucket: "myfullstackproject.appspot.com",
+    messagingSenderId: "324837953357"
+    };
+    //  START CODING BELOW!!
+
+    // Initialize Firebase
+    firebase.initializeApp(config);
+
+
+    // Create a variable to reference the database
+    var database = firebase.database();
+
+
+    // Capture Button Click
+    $("#add-user").on("click", function(event) {
+      // Don't refresh the page!
+      event.preventDefault();
+
+      // YOUR TASK!!!
+
+      // Code in the logic for storing and retrieving the most recent user.
+
+      // Don't forget to provide initial data to your Firebase database.
+      var formName = $('#name-input').val();
+      var formAge = $('#age-input').val();
+      var formEmail = $('#email-input').val();
+      var formComment = $('#comment-input').val();
+
+      database.ref('/recentreview').push({
+        name: formName,
+        age: formAge,
+        email: formEmail,
+        comment: formComment
+      });
+    });
+
+
+    // Firebase watcher + initial loader HINT: .on("value")
+    database.ref('/recentreview').on('value', function(snapshot) {
+   
+      
+      snapshot.forEach(function(childSnapshot) {
+            // console.log(index);
+            var value = childSnapshot.val();
+            console.log(value);
+            var recentreview = "<tr>";
+                recentreview      += "<td class=name>" + value.name + "</td>";
+                recentreview      += "<td class=email>" + value.email + "</td>";
+                recentreview      += "<td class=age>" + value.age + "</td>";
+                recentreview      += "<td class=comment>" + value.comment + "</td>";
+                recentreview +="</tr>";
+            $('tbody').prepend(recentreview);
+            $('#name-display').html(value.name);
+            $('#email-display').html(value.email);
+            $('#age-display').html(value.age);
+            $('#comment-display').html(value.comment);
+        }); 
+      
+    });
+
+
+
+    // The createRow function takes data returned form and appends the table data to the tbody
+database.ref("formInfo").on("child_added",function(childSnapshot) {
+    var now = moment();
+    var prevDate = moment(childSnapshot.val().date);
+    // console.log(childSnapshot.val());
+    var recentreview = "<tr>";
+        recentreview += "<td>" + childSnapshot.val().name + "</td>";
+        recentreview += "<td>" + childSnapshot.val().role + "</td>";
+        recentreview += "<td>" + childSnapshot.val().date + "</td>";
+        recentreview += "<td>" + now.diff(prevDate, 'months') +"</td>";
+        recentreview += "<td>" + childSnapshot.val().rate + "</td>";
+        recentreview += "<td></td>";
+        recentreview += "</tr>";
+
+   $('tbody').prepend(recentreview);
+});
+
+
+    // Create Error Handling
+
+  </script>
+
+</body>
+
+</html>
