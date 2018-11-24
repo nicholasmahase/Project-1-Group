@@ -36,25 +36,17 @@ $(document).ready(function () {
     // Search function
 
     $("button").on("click", function () {
-            var searchTerm = $(this).attr("#search_form");
-            var limit = 10;
-            var price = "";
-            var categories = "halal";
-            var location="";
-            var rating = "";
-            //var yelpAPI = "&api_key=sQz0W1xApsQiW8nhGFTVFFEuOYci9WfuCtYGhnGdGDNhMuA5PvtdJLXWNQZhEDkNumudP6z8jXf0ErBdHOlrV7v8dYgisvk2fwJEJtTLDqApA_8ldmybzIsz61XzW3Yx";
-            //var queryURL = "https://api.yelp.com/v3/businesses/search=" + categories + searchTerm + "&limit=" + limit + "&price=" + price + location + rating + yelpAPI;
-
+            var searchTerm = $("#search_form").val().trim();
             $.ajax({
                 method: 'GET',
-                url: 'https://developers.zomato.com/api/v2.1/search?entity_id=toronto&entity_type=city&q=food&count=10&cuisines=halal&sort=rating',
+                url: 'https://developers.zomato.com/api/v2.1/search?',
                 data: {
                     entity_id: 'toronto',
                     entity_type: 'city', 
-                    q: 'food',
+                    q: searchTerm,
                     count: 10,
                     cuisines: 'halal',
-                    sort: 'rating'
+                    //sort: 'real_distance'
                 }, 
                 dataType: 'json',
                 async: true,
@@ -68,19 +60,18 @@ $(document).ready(function () {
                     var resResultName = response.restaurants[i].restaurant.name;
                     var resResultRating = response.restaurants[i].restaurant.user_rating.aggregate_rating;
                     var resResultLocation = response.restaurants[i].restaurant.location.address;
-                    var resResultPrice = response.restaurants[i].restaurant.name;
+                    var resResultCuisine = response.restaurants[i].restaurant.cuisines;
+                    var url = response.restaurants[i].restaurant.events_url;
 
                     console.log(response.restaurants[i]);
                        var searchResults = "<tr>";
-                       searchResults += "<td>" + resResultName + "</td>";
-                       searchResults += "<td>" + resResultRating + "</td>";
+                       searchResults += "<td> <a href= " + url + ">" + resResultName + "</a></td>";
                        searchResults += "<td>" + resResultLocation + "</td>";
-                       searchResults += "<td>" + resResultPrice + "</td>";
+                       searchResults += "<td>" + resResultRating + "</td>";
+                       searchResults += "<td>" + resResultCuisine + "</td>";
                        searchResults += "<td></td>";
                        searchResults += "</tr>";
                        $('.table').append(searchResults);
-
-                
                 }
                 }
             });
