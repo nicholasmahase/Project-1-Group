@@ -59,19 +59,6 @@ $(document).ready(function () {
                 var resResultCuisine = response.restaurants[i].restaurant.cuisines;
                 var url = response.restaurants[i].restaurant.events_url;
 
-<<<<<<< HEAD
-                    console.log(response.restaurants[i]);
-                       searchResults += "<tr>";
-                       searchResults += "<td> <a href= " + url + " target='_blank'>" + resResultName + "</a></td>";
-                       searchResults += "<td>" + resResultLocation + "</td>";
-                       searchResults += "<td>" + resResultRating + "</td>";
-                       searchResults += "<td>" + resResultCuisine + "</td>";
-                       searchResults += "<td></td>";
-                       searchResults += "</tr>";
-                }
-                
-                $('.table').html(searchResults);
-=======
                 console.log(response.restaurants[i]);
                 searchResults += "<tr>";
                 searchResults += "<td> <a href= " + url + ">" + resResultName + "</a></td>";
@@ -80,7 +67,6 @@ $(document).ready(function () {
                 searchResults += "<td>" + resResultCuisine + "</td>";
                 searchResults += "<td></td>";
                 searchResults += "</tr>";
->>>>>>> f34bc6c380438e47d32b7d5dc5f83c4f0e024142
                 }
             
             $('.table').html(searchResults);
