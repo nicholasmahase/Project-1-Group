@@ -32,11 +32,12 @@ $(document).ready(function () {
 
     $("button").on("click", function () {
         var searchTerm = $("#search_form").val().trim();
+        var searchCity = $("#search_city").val().trim();
         $.ajax({
             method: 'GET',
             url: 'https://developers.zomato.com/api/v2.1/search?',
             data: {
-                entity_id: 'Toronto',
+                entity_id: searchCity,
                 entity_type: 'city', 
                 q: searchTerm,
                 count: 10,

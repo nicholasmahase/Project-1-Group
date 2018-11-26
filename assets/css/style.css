@@ -28,9 +28,7 @@
     bottom: 252px;
 }
 form.form-inline {
-    position: relative;
-    left: 39%;
-    right: auto;
+    margin: auto;
 }
 
 button.btn.btn-outline-success.my-2.my-sm-0 {
