@@ -50,3 +50,21 @@ button.btn.btn-outline-success.my-2.my-sm-0:hover{
   .welcome_area {
     display: inline-flex;
 }
+.card_3 {
+    position: relative;
+    left: 42%;
+}
+.card_2 {
+    position: relative;
+    left: 25%;
+}
+.card_1 {
+    position: relative;
+    left: 9%;
+}
+.card_1 p.card-text {
+    margin-top:80px;
+}
+.card-body {
+    text-align: justify;
+}
