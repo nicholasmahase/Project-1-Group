@@ -78,7 +78,7 @@ $(document).ready(function () {
                 searchResults += "<td></td>";
                 searchResults += "</tr>";
                 } 
-                $('#yelp_table').append(searchResults);
+                $('#yelp_table').html(searchResults);
          }  
         });
     }); 
