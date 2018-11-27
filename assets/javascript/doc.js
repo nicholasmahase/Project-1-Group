@@ -1,15 +1,15 @@
-$(document).ready(function () {
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyDVPAHzPuMJJbOl2uK9uXNx2jF41V_bVNE",
+    authDomain: "myfullstackproject.firebaseapp.com",
+    databaseURL: "https://myfullstackproject.firebaseio.com",
+    projectId: "myfullstackproject",
+    storageBucket: "myfullstackproject.appspot.com",
+    messagingSenderId: "324837953357"
+};
+firebase.initializeApp(config);
 
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyDVPAHzPuMJJbOl2uK9uXNx2jF41V_bVNE",
-        authDomain: "myfullstackproject.firebaseapp.com",
-        databaseURL: "https://myfullstackproject.firebaseio.com",
-        projectId: "myfullstackproject",
-        storageBucket: "myfullstackproject.appspot.com",
-        messagingSenderId: "324837953357"
-    };
-    firebase.initializeApp(config);
+$(document).ready(function () {
 
     // Create a variable to reference the database
     var database = firebase.database();
@@ -40,7 +40,7 @@ $(document).ready(function () {
                 entity_id: searchCity,
                 entity_type: 'city', 
                 q: 'halal ' + searchTerm,
-                count: 10,
+                count: 5,
                 //sort: 'real_distance'
             }, 
             dataType: 'json',
@@ -69,7 +69,7 @@ $(document).ready(function () {
                 searchResults += "</tr>";
                 }
             
-            $('.table').html(searchResults);
+            $('#zomato_table').html(searchResults);
             }
         });
     });

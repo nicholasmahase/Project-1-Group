@@ -68,3 +68,6 @@ button.btn.btn-outline-success.my-2.my-sm-0:hover{
 .card-body {
     text-align: justify;
 }
+#search_results {
+    margin-bottom: 75px;
+}
