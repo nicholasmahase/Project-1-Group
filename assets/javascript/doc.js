@@ -39,9 +39,8 @@ $(document).ready(function () {
             data: {
                 entity_id: searchCity,
                 entity_type: 'city', 
-                q: searchTerm,
+                q: 'halal ' + searchTerm,
                 count: 10,
-                cuisines: 'halal',
                 //sort: 'real_distance'
             }, 
             dataType: 'json',
