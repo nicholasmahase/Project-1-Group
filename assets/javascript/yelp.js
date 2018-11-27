@@ -1,16 +1,4 @@
 $(document).ready(function () {
-
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyDVPAHzPuMJJbOl2uK9uXNx2jF41V_bVNE",
-        authDomain: "myfullstackproject.firebaseapp.com",
-        databaseURL: "https://myfullstackproject.firebaseio.com",
-        projectId: "myfullstackproject",
-        storageBucket: "myfullstackproject.appspot.com",
-        messagingSenderId: "324837953357"
-    };
-    firebase.initializeApp(config);
-
     // Create a variable to reference the database
     var database = firebase.database();
 
@@ -90,7 +78,7 @@ $(document).ready(function () {
                 searchResults += "<td></td>";
                 searchResults += "</tr>";
                 } 
-                $('.yelpTable').html(searchResults);
+                $('body').append(searchResults);
          }  
         });
     }); 
