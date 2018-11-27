@@ -40,7 +40,7 @@ $(document).ready(function () {
                 entity_id: searchCity,
                 entity_type: 'city', 
                 q: 'halal ' + searchTerm,
-                count: 10,
+                count: 5,
                 //sort: 'real_distance'
             }, 
             dataType: 'json',
@@ -69,7 +69,7 @@ $(document).ready(function () {
                 searchResults += "</tr>";
                 }
             
-            $('.table').html(searchResults);
+            $('#zomato_table').html(searchResults);
             }
         });
     });

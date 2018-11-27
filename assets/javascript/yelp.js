@@ -58,7 +58,7 @@ $(document).ready(function () {
             data: {
                 term: 'halal ' + searchTerm,
                 location: searchCity,
-                limit: 10
+                limit: 5
             },
             success: function(response) { 
                 var searchResults = "";
@@ -78,7 +78,7 @@ $(document).ready(function () {
                 searchResults += "<td></td>";
                 searchResults += "</tr>";
                 } 
-                $('body').append(searchResults);
+                $('#yelp_table').append(searchResults);
          }  
         });
     }); 
