@@ -5,25 +5,14 @@
 
   <meta charset="UTF-8">
   <title>Reviews Page</title>
-
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
-    crossorigin="anonymous">
-
-    <style>
-
-    table {
-    
-    position: relative;
-    top: 350px;
-    width: 225%;
-    right: 450px;
-    
-}
-
-
-    </style>
-
+  <!--Viewport-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--Reset-->
+  <link rel="stylesheet" href="./assets/css/reset.css">
+  <!--Bootstrap CSS-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!--<link rel="stylesheet" href="./assets/css/style.css">-->
 </head>
 
 <body>
@@ -82,16 +71,11 @@
             <h4 id="age-display">Age: 27</h4>
             <p id="comment-display">I'm signing up, because I want to spread sandwiches to the world.</p>
 
-            <table>
-                <tbody>
-
-                </tbody>
-            </table>
-
           </div>
         </div>
       </div>
-
+      <div class="row">
+          <div class="col-12">What our customers say</div>
     </div>
 
   </div>
@@ -183,7 +167,7 @@ database.ref("formInfo").on("child_added",function(childSnapshot) {
         recentreview += "<td></td>";
         recentreview += "</tr>";
 
-   $('tbody').prepend(recentreview);
+   $('col-12').prepend(recentreview);
 });
 
 
