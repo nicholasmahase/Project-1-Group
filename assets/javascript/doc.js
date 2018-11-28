@@ -39,7 +39,6 @@ $(document).ready(function () {
             url: 'https://developers.zomato.com/api/v2.1/locations?',
             data: {
                 query: searchCity,
-                entity_type: 'city', 
             }, 
             dataType: 'json',
             async: true,
