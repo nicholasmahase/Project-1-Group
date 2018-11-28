@@ -36,13 +36,9 @@ $(document).ready(function () {
 
         $.ajax({
             method: 'GET',
-            url: 'https://developers.zomato.com/api/v2.1/search?',
+            url: 'https://developers.zomato.com/api/v2.1/locations?',
             data: {
-                entity_id: searchCity,
-                entity_type: 'city', 
-                q: 'halal ' + searchTerm,
-                count: 5,
-                //sort: 'real_distance'
+                query: searchCity,
             }, 
             dataType: 'json',
             async: true,
@@ -52,24 +48,20 @@ $(document).ready(function () {
                 xhr.setRequestHeader('user-key', '5c2f43de515f9f19b1dc0c0aab34f1fa');
             },  
             success: function(response) { 
-                var searchResults = "";
-                for(var i = 0; i < response.restaurants.length; i++) {
-                var resResultName = response.restaurants[i].restaurant.name;
-                var resResultRating = response.restaurants[i].restaurant.user_rating.aggregate_rating;
-                var resResultLocation = response.restaurants[i].restaurant.location.address;
-                var resResultCuisine = response.restaurants[i].restaurant.cuisines;
-                var url = response.restaurants[i].restaurant.events_url;
 
-                console.log(response.restaurants[i]);
-            }
-        });
+                for(var i = 0; i < response.location_suggestions.length; i++) {
+                var res_entity_id = response.location_suggestions[i].entity_id;
+                var res_entity_type = response.location_suggestions[i].entity_type;
+                console.log(res_entity_id);
+                console.log(res_entity_type);
 
+                }
         $.ajax({
             method: 'GET',
             url: 'https://developers.zomato.com/api/v2.1/search?',
             data: {
-                entity_id: searchCity,
-                entity_type: 'city', 
+                entity_id: res_entity_id,
+                entity_type: res_entity_type, 
                 q: 'halal ' + searchTerm,
                 count: 5,
                 //sort: 'real_distance'
@@ -102,6 +94,8 @@ $(document).ready(function () {
             
             $('#zomato_table').html(searchResults);
             }
-        });
+        }); 
+    }
+});
     });
 });
