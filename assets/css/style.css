@@ -47,20 +47,28 @@ button.btn.btn-outline-success.my-2.my-sm-0:hover{
   }
 
   /* Cards Area */
-  .welcome_area {
-    display: inline-flex;
+.welcome_area {
+    /*! display: inline-flex; */
+    width: 960px;
+    margin: 20px auto;
 }
 .card_3 {
-    position: relative;
-    left: 42%;
+    /*! position: relative; */
+    /*! left: 42%; */
+    float: left;
+    width: 33%;
 }
 .card_2 {
-    position: relative;
-    left: 25%;
+    /*! position: relative; */
+    /*! left: 25%; */
+    float: left;
+    width: 33%;
 }
 .card_1 {
-    position: relative;
-    left: 9%;
+    /*! position: relative; */
+    /*! left: 9%; */
+    float: left;
+    width: 33%;
 }
 .card_1 p.card-text {
     margin-top:80px;
@@ -68,6 +76,12 @@ button.btn.btn-outline-success.my-2.my-sm-0:hover{
 .card-body {
     text-align: justify;
 }
+.card-img-top {
+    width: 250px;
+}
 #search_results {
     margin-bottom: 75px;
+}
+.footer {
+    clear: both;
 }
