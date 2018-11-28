@@ -50,8 +50,8 @@ button.btn.btn-outline-success.my-2.my-sm-0:hover{
 
   /* Cards Area */
 .welcome_area {
-    /*! display: inline-flex; */
-    width: 960px;
+    /*! display: inline-flex; 
+    width: 960px;*/
     margin: 20px auto;
 }
 .card_3 {
