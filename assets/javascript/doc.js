@@ -33,6 +33,37 @@ $(document).ready(function () {
     $("button").on("click", function () {
         var searchTerm = $("#search_form").val().trim();
         var searchCity = $("#search_city").val().trim();
+
+        $.ajax({
+            method: 'GET',
+            url: 'https://developers.zomato.com/api/v2.1/search?',
+            data: {
+                entity_id: searchCity,
+                entity_type: 'city', 
+                q: 'halal ' + searchTerm,
+                count: 5,
+                //sort: 'real_distance'
+            }, 
+            dataType: 'json',
+            async: true,
+            
+            // This inserts the api key into the HTTP header
+            beforeSend: function(xhr){
+                xhr.setRequestHeader('user-key', '5c2f43de515f9f19b1dc0c0aab34f1fa');
+            },  
+            success: function(response) { 
+                var searchResults = "";
+                for(var i = 0; i < response.restaurants.length; i++) {
+                var resResultName = response.restaurants[i].restaurant.name;
+                var resResultRating = response.restaurants[i].restaurant.user_rating.aggregate_rating;
+                var resResultLocation = response.restaurants[i].restaurant.location.address;
+                var resResultCuisine = response.restaurants[i].restaurant.cuisines;
+                var url = response.restaurants[i].restaurant.events_url;
+
+                console.log(response.restaurants[i]);
+            }
+        });
+
         $.ajax({
             method: 'GET',
             url: 'https://developers.zomato.com/api/v2.1/search?',
