@@ -66,10 +66,36 @@ $(document).ready(function () {
 
         $.ajax({
             method: 'GET',
+            url: 'https://developers.zomato.com/api/v2.1/locations?',
+            data: {
+                query: searchCity,
+                entity_type: 'city', 
+            }, 
+            dataType: 'json',
+            async: true,
+            
+            // This inserts the api key into the HTTP header
+            beforeSend: function(xhr){
+                xhr.setRequestHeader('user-key', '5c2f43de515f9f19b1dc0c0aab34f1fa');
+            },  
+            success: function(response) { 
+
+                for(var i = 0; i < response.location_suggestions.length; i++) {
+                var res_entity_id = response.location_suggestions[i].entity_id;
+                var res_entity_type = response.location_suggestions[i].entity_type;
+                console.log(res_entity_id);
+                console.log(res_entity_type);
+
+                }
+            
+
+        
+        $.ajax({
+            method: 'GET',
             url: 'https://developers.zomato.com/api/v2.1/search?',
             data: {
-                entity_id: searchCity,
-                entity_type: 'city', 
+                entity_id: res_entity_id,
+                entity_type: res_entity_type, 
                 q: 'halal ' + searchTerm,
                 count: 5,
                 //sort: 'real_distance'
@@ -102,6 +128,8 @@ $(document).ready(function () {
             
             $('#zomato_table').html(searchResults);
             }
-        });
+        }); 
+    }
+});
     });
 });
