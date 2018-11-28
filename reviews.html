@@ -5,11 +5,14 @@
 
   <meta charset="UTF-8">
   <title>hALP Reviews Page</title>
-
-  <!-- Bootstrap -->
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+  <!--Viewport-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--Reset-->
+  <link rel="stylesheet" href="./assets/css/reset.css">
+  <!--Bootstrap CSS-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
   <style>
 
 .reviewstable {
@@ -53,14 +56,29 @@ td.comment {
 </head>
 
 <body>
-
+  <!-- Navigation-->
+  <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link active" href="index.html">Home</a>
+      </li>    
+      <li class="nav-item">
+        <a class="nav-link" href="aboutus.html">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="reviews.html">Reviews</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="contact.html">Contact Us</a>
+      </li>
+  
+    </ul>
   <div class="container">
 
     <br>
 
     <!-- Jumbotron -->
-    <div class="jumbotron">
-      <h1 class="text-center">Review Us Today!</h1>
+    <div class="container">
+      <h1 class="text-center">Leave Us A Review</h1>
     </div>
     <div class="row">
 
@@ -206,14 +224,10 @@ td.comment {
 
     // The createRow function takes data returned form and appends the table data to the tbody
     database.ref("formInfo").on("child_added", function (childSnapshot) {
-      var now = moment();
-      var prevDate = moment(childSnapshot.val().date);
-      // console.log(childSnapshot.val());
       var recentreview = "<tr>";
       recentreview += "<td>" + childSnapshot.val().name + "</td>";
       recentreview += "<td>" + childSnapshot.val().role + "</td>";
       recentreview += "<td>" + childSnapshot.val().date + "</td>";
-      recentreview += "<td>" + now.diff(prevDate, 'months') + "</td>";
       recentreview += "<td>" + childSnapshot.val().rate + "</td>";
       recentreview += "<td></td>";
       recentreview += "</tr>";
@@ -224,7 +238,25 @@ td.comment {
 
     // Create Error Handling
   </script>
-
+    <!-- Sticky Footer-->
+    <div class="container">
+        <footer class="footer">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Home</a>
+                  </li>    
+                  <li class="nav-item">
+                    <a class="nav-link" href="aboutus.html">About Us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="reviews.html">Reviews</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact Us</a>
+                  </li>
+            </ul>
+        </footer>
+            </div>
 </body>
 
 </html>
