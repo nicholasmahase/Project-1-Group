@@ -13,140 +13,89 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./assets/css/style.css">
-  <style>
-
-.reviewstable {
-    position: relative;
-    right: 140px;
-    width: 92%;
-    height: auto;
-    /* border: 1px solid black; */
-}
-
-td.name {
-    width: 10%;
-    text-align: center;
-    font-size: 39px;
-    border: 1px solid black;
-}
-
-td.email {
-    width: 2% !important;
-    text-align: center;
-    font-size: 20px;
-    border: 1px solid black;
-}
-
-td.age {
-    border: 1px solid black;
-    width: 5%;
-    font-size: 45px;
-    text-align: center;
-}
-
-td.comment {
-    border: 1px solid black;
-    width: 15%;
-    padding: 7px 7px 5px 9px;
-    font-style: oblique;
-}
-
-    </style>
-
 </head>
 
 <body>
   <!-- Navigation-->
   <ul class="nav justify-content-end">
-      <li class="nav-item">
-        <a class="nav-link active" href="index.html">Home</a>
-      </li>    
-      <li class="nav-item">
-        <a class="nav-link" href="aboutus.html">About Us</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="reviews.html">Reviews</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="contact.html">Contact Us</a>
-      </li>
-  
-    </ul>
+    <li class="nav-item">
+      <a class="nav-link active" href="index.html">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="aboutus.html">About Us</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="reviews.html">Reviews</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="contact.html">Contact Us</a>
+    </li>
+  </ul>
   <div class="container">
-
     <br>
-
     <!-- Jumbotron -->
     <div class="container">
       <h1 class="text-center">Leave Us A Review</h1>
-    </div>
-    <div class="row">
 
-      <!-- Sign-Up Card-->
-      <div class="col-lg-6">
-        <div class="card">
-          <div class="card-header">
-            Got A New Review?
-          </div>
-          <div class="card-body">
+      <div class="row">
 
-            <!-- Sign-up Form (note the various input "types")-->
-            <form role="form">
-              <div class="form-group">
-                <label for="name-input">Name:</label>
-                <input class="form-control" id="name-input" type="text">
-              </div>
-              <div class="form-group">
-                <label for="email-input">Email:</label>
-                <input class="form-control" id="email-input" type="email">
-              </div>
-              <div class="form-group">
-                <label for="age-input">Age:</label>
-                <input class="form-control" id="age-input" type="number">
-              </div>
-              <div class="form-group">
-                <label for="comment-input">Tell Us What You Think!</label>
-                <textarea class="form-control" id="comment-input" rows="5"></textarea>
-              </div>
-              <button class="btn btn-default" id="add-user" type="submit">Submit</button>
-            </form>
-          </div>
-        </div>
-      </div>
+        <!-- Sign-Up Card-->
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              Got A New Review?
+            </div>
+            <div class="card-body">
 
-      <!-- Most Recent Member Card -->
-      <div class="col-lg-6">
-        <div class="card">
-          <div class="card-header">
-            Most Recent Reviews
-          </div>
-          <div class="card-body" id="recent-member">
-            <h2 id="name-display">Jimmy John</h2>
-            <h4 id="email-display">Email: jimmy@john.edu</h4>
-            <h4 id="age-display">Age: 27</h4>
-            <p id="comment-display">I'm signing up, because I want to spread sandwiches to the world.</p>
-            <div class=reviewstable>
-              <table class="table">
-                  <thead class="thead-dark">
-                      <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Age</th>
-                        <th scope="col">Comment</th>
-                      </tr>
-                    </thead>
-                <tbody>
-
-                </tbody>
-              </table>
+              <!-- Sign-up Form (note the various input "types")-->
+              <form role="form">
+                <div class="form-group">
+                  <label for="name-input">Name:</label>
+                  <input class="form-control" id="name-input" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="email-input">Email:</label>
+                  <input class="form-control" id="email-input" type="email">
+                </div>
+                <div class="form-group">
+                  <label for="age-input">Age:</label>
+                  <input class="form-control" id="age-input" type="number">
+                </div>
+                <div class="form-group">
+                  <label for="comment-input">Tell Us What You Think!</label>
+                  <textarea class="form-control" id="comment-input" rows="5"></textarea>
+                </div>
+                <button class="btn btn-default" id="add-user" type="submit">Submit</button>
+              </form>
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
-          <div class="col-12">What our customers say</div>
     </div>
+    <!-- Most Recent Member Card -->
+    <div class="container">
+      <h2 class="wocs">What our customers say</h2>
+      <div class="col">
+        <div class=reviewstable>
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Age</th>
+                <th scope="col">Review</th>
+              </tr>
+            </thead>
+            <tbody>
 
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
   </div>
 
   <!-- jQuery -->
@@ -219,44 +168,26 @@ td.comment {
       });
 
     });
-
-
-
-    // The createRow function takes data returned form and appends the table data to the tbody
-    database.ref("formInfo").on("child_added", function (childSnapshot) {
-      var recentreview = "<tr>";
-      recentreview += "<td>" + childSnapshot.val().name + "</td>";
-      recentreview += "<td>" + childSnapshot.val().role + "</td>";
-      recentreview += "<td>" + childSnapshot.val().date + "</td>";
-      recentreview += "<td>" + childSnapshot.val().rate + "</td>";
-      recentreview += "<td></td>";
-      recentreview += "</tr>";
-
-      $('tbody').prepend(recentreview);
-    });
-
-
-    // Create Error Handling
   </script>
-    <!-- Sticky Footer-->
-    <div class="container">
-        <footer class="footer">
-            <ul class="nav justify-content-center">
-                <li class="nav-item">
-                    <a class="nav-link active" href="index.html">Home</a>
-                  </li>    
-                  <li class="nav-item">
-                    <a class="nav-link" href="aboutus.html">About Us</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="reviews.html">Reviews</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact Us</a>
-                  </li>
-            </ul>
-        </footer>
-            </div>
+  <!-- Sticky Footer-->
+  <div class="container">
+    <footer class="footer">
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link active" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="aboutus.html">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="reviews.html">Reviews</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact Us</a>
+        </li>
+      </ul>
+    </footer>
+  </div>
 </body>
 
 </html>
